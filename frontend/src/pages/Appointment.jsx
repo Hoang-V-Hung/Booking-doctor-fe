@@ -8,7 +8,7 @@ const Appointment = () => {
 
     const { docId } = useParams()
     const { doctors, currencySymbol } = useContext(AppContext)
-    const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    const daysOfWeek = ['Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy', 'Chủ Nhật']
 
     const [docInfo, setDocInfo] = useState(null)
     const [docSlots, setDocSlots] = useState([])
@@ -102,19 +102,19 @@ const Appointment = () => {
                     {/* ---------doctor about------ */}
                     <div>
                         <p className='flex items-center gap-1 text-sm font-medium text-gray-900 mt-3'>
-                            About <img src={assets.info_icon} alt='' />
+                            Thông tin <img src={assets.info_icon} alt='' />
                         </p>
                         <p className='text-sm text-gray-500 max-w-[700px] mt-1'>{docInfo.about}</p>
                     </div>
                     <p className='text-gray-500 font-medium mt-4'>
-                        Appointment fee: <span className='text-gray-600'>{currencySymbol}{docInfo.fees}</span>
+                        Chi phí: <span className='text-gray-600'>{currencySymbol}{docInfo.fees}</span>
                     </p>
                 </div>
             </div>
 
             {/* -------booking slot------- */}
             <div className='sm:ml-72 sm:pl-4 mt-4 font-medium text-gray-700'>
-                <p>Booking slots</p>
+                <p>Đặt chỗ</p>
                 <div className='flex gap-3 items-center w-full overflow-x-scroll mt-4'>
                     {
                         docSlots.length && docSlots.map((item, index) => (
@@ -133,7 +133,7 @@ const Appointment = () => {
                         </p>
                     ))}
                 </div>
-                <button className='bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6'>Book an appointment</button>
+                <button className='bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6'>Đặt lịch ngay</button>
             </div>
 
             {/* ------listing related doctors----- */}
