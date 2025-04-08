@@ -32,12 +32,12 @@ import doc14 from './doc14.png'
 import doc15 from './doc15.png'
 import doc16 from './doc16.png'
 import doc17 from './doc17.png'
-import Dermatologist from './Dermatologist.svg'
-import Gastroenterologist from './Gastroenterologist.svg'
-import General_physician from './General_physician.svg'
-import Gynecologist from './Gynecologist.svg'
-import Neurologist from './Neurologist.svg'
-import Pediatricians from './Pediatricians.svg'
+import Dermatologist from './Dermatologist.svg.jpg'
+import Gastroenterologist from './Gastroenterologist.svg.png'
+import General_physician from './General_physician.svg.jpg'
+import Gynecologist from './Gynecologist.svg.jpg'
+import Neurologist from './Neurologist.svg.jpg'
+import Pediatricians from './Pediatricians.svg.jpg'
 
 
 export const assets = {
@@ -62,7 +62,7 @@ export const assets = {
 
 export const specialityData = [
     {
-        speciality: 'Tim mạch',
+        speciality: 'Răng hàm mặt',
         image: General_physician
     },
     {
@@ -70,19 +70,19 @@ export const specialityData = [
         image: Gynecologist
     },
     {
-        speciality: 'Ung bướu',
+        speciality: 'Chẩn đoán hình ảnh',
         image: Dermatologist
     },
     {
-        speciality: 'Răng hàm mặt',
+        speciality: 'Ung bướu',
         image: Pediatricians
     },
     {
-        speciality: 'Chẩn đoán hình ảnh',
+        speciality: 'Xét nghiệm',
         image: Neurologist
     },
     {
-        speciality: 'Xét nghiệm',
+        speciality: 'Tim mạch',
         image: Gastroenterologist
     },
 ]
