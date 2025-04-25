@@ -75,48 +75,45 @@ const MyAppointments = () => {
   };
 
   useEffect(() => {
-  if (token) {
-    getUserAppointments();
-  }
-
-  const params = new URLSearchParams(window.location.search);
-  const resultCode = params.get('resultCode');
-  const extraDataEncoded = params.get('extraData');
-
-  let appointmentId = null;
-
-  if (extraDataEncoded) {
-    try {
-      const decoded = JSON.parse(atob(extraDataEncoded));
-      appointmentId = decoded.appointmentId;
-    } catch (err) {
-      console.error("Không đọc được appointmentId từ extraData:", err);
+    if (token) {
+      getUserAppointments();
     }
-  }
 
-  if (resultCode === '0' && appointmentId) {
-    toast.success('Thanh toán thành công ');
+    const params = new URLSearchParams(window.location.search);
+    const resultCode = params.get('resultCode');
+    const extraDataEncoded = params.get('extraData');
 
-    const updatePayment = async () => {
+    let appointmentId = null;
+
+    if (extraDataEncoded) {
       try {
-        await axios.post(`${backendUrl}/api/user/update-payment-status`, { appointmentId }, {
-          headers: { token }
-        });
-        getUserAppointments();
-
-        // Chuyển hướng về trang "my-appointments" trên môi trường deploy
-        window.location.href = '/my-appointments'; // Điều này sẽ tự động chuyển hướng đến URL của ứng dụng trên deploy
-      } catch (error) {
-        toast.error('Cập nhật trạng thái thất bại');
+        const decoded = JSON.parse(atob(extraDataEncoded));
+        appointmentId = decoded.appointmentId;
+      } catch (err) {
+        console.error("Không đọc được appointmentId từ extraData:", err);
       }
-    };
-    updatePayment();
-  } else if (resultCode && resultCode !== '0') {
-    toast.error('Thanh toán thất bại');
-    // Chuyển hướng về trang "my-appointments" nếu thanh toán thất bại
-    window.location.href = '/my-appointments'; // Điều này sẽ tự động chuyển hướng đến URL của ứng dụng trên deploy
-  }
-}, [token]);
+    }
+
+    if (resultCode === '0' && appointmentId) {
+      toast.success('Thanh toán thành công ');
+
+      const updatePayment = async () => {
+        try {
+          await axios.post(`${backendUrl}/api/user/update-payment-status`, { appointmentId }, {
+            headers: { token }
+          });
+          getUserAppointments();
+          navigate('/my-appointments', { replace: true });
+        } catch (error) {
+          toast.error('Cập nhật trạng thái thất bại');
+        }
+      };
+      updatePayment();
+    } else if (resultCode && resultCode !== '0') {
+      toast.error('Thanh toán thất bại ');
+      navigate('/my-appointments', { replace: true });
+    }
+  }, [token]);
 
   return (
     <div>
