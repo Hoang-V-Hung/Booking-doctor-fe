@@ -65,6 +65,7 @@ const NavBar = () => {
                         <NavLink onClick={() => setShowMenu(false)} to='/doctors'><p className='px-4 py-2 rounded inline-block'>Tất cả bác sĩ</p></NavLink>
                         <NavLink onClick={() => setShowMenu(false)} to='/about'><p className='px-4 py-2 rounded inline-block'>Về chúng tôi</p></NavLink>
                         <NavLink onClick={() => setShowMenu(false)} to='/contact'><p className='px-4 py-2 rounded inline-block'>Liên hệ</p></NavLink>
+                        <NavLink onClick={() => setShowMenu(false)} to='/login'><p className='px-4 py-2 rounded inline-block'>Tạo tài khoản</p></NavLink>
                     </ul>
                 </div>
             </div>
